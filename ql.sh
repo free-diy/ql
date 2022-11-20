@@ -32,6 +32,8 @@ TIME l "升级npm至${latest_ver}"
 npm install -g npm@${latest_ver} --force
 TIME l "升级pip"
 pip3 install --upgrade pip
+TIME l "升级setuptools"
+pip3 install --upgrade setuptools
 TIME l "安装yarn"
 npm install -g yarn --force
 TIME l "安装依赖date-fns"
@@ -78,6 +80,8 @@ TIME l "安装依赖jsencrypt
 npm install -g jsencrypt
 TIME l "安装依赖jieba"
 pip3 install jieba
+TIME l "安装依赖gevent"
+pip install gevent
 TIME l "安装依赖b4"
 pip3 install b4
 TIME l "安装依赖bs4"
