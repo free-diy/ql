@@ -76,7 +76,7 @@ TIME l "安装依赖js-base64"
 npm install -g js-base64
 TIME l "安装依赖node-rsa"
 npm install -g node-rsa
-TIME l "安装依赖jsencrypt
+TIME l "安装依赖jsencrypt"
 npm install -g jsencrypt
 TIME l "安装依赖jieba"
 pip3 install jieba
