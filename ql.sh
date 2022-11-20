@@ -48,7 +48,7 @@ TIME l "安装依赖png-js"
 npm install -g png-js
 TIME l "安装依赖crypto-js"
 npm install -g crypto-js
-TIME l "安装依赖ds
+TIME l "安装依赖ds"
 npm install -g ds
 TIME l "安装依赖md5"
 npm install -g md5
