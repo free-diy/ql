@@ -56,6 +56,8 @@ TIME l "安装依赖ts-md5"
 npm install -g ts-md5
 TIME l "安装依赖tslib"
 npm install -g tslib
+TIME l "安装依赖download"
+npm install -g download
 TIME l "安装依赖@types/node"
 npm install -g @types/node
 TIME l "安装依赖requests"
