@@ -30,6 +30,9 @@ latest_ver="$(wget -qO- -t1 -T2 "https://api.github.com/repos/npm/cli/releases/l
 npm install -g npm
 TIME l "升级npm至${latest_ver}"
 npm install -g npm@${latest_ver} --force
+TIME l "升级pnpm"
+pnpm add -g pnpm
+pnpm install -g
 TIME l "升级pip"
 pip3 install --upgrade pip
 TIME l "升级setuptools"
@@ -37,9 +40,9 @@ pip3 install --upgrade setuptools
 TIME l "安装yarn"
 npm install -g yarn --force
 TIME l "安装依赖date-fns"
-yarn add date-fns
+npm install -g date-fns
 TIME l "安装依赖axios"
-yarn add axios
+npm install -g axios
 TIME l "安装依赖ts-node"
 yarn add ts-node
 TIME l "安装依赖typescript"
@@ -61,6 +64,8 @@ npm install -g download
 TIME l "安装依赖@types/node"
 npm install -g @types/node
 TIME l "安装依赖requests"
+npm install -g requests
+TIME l "安装依赖requests"
 pip3 install requests
 TIME l "安装依赖tough-cookie"
 npm install -g tough-cookie
@@ -74,12 +79,22 @@ TIME l "安装依赖fs"
 npm install -g fs
 TIME l "安装依赖ws"
 npm install -g ws
+TIME l "安装依赖form-data"
+npm install -g form-data
 TIME l "安装依赖js-base64"
 npm install -g js-base64
 TIME l "安装依赖node-rsa"
 npm install -g node-rsa
 TIME l "安装依赖jsencrypt"
 npm install -g jsencrypt
+TIME l "安装依赖got"
+npm install -g got
+TIME l "安装依赖js-base64"
+pnpm install -g js-base64
+TIME l "安装依赖qrcode-terminal"
+pnpm install -g qrcode-terminal
+TIME l "安装依赖silly-datetime"
+pnpm install -g silly-datetime
 TIME l "安装依赖jieba"
 pip3 install jieba
 TIME l "安装依赖gevent"
@@ -95,14 +110,15 @@ pip3 install aiohttp
 TIME l "安装依赖PyExecJS"
 pip3 install PyExecJS
 TIME l "安装cairo-dev"
-npm install -g got
-cd /ql/scripts/ && apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev
+pip3 install cairo-dev
+TIME l "安装requests"
+pip3 install requests
+cd /ql/scripts/ && apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i && npm i -S ts-node typescript @types/node date-fns axios png-js canvas --build-from-source
 cd /ql
-pip3 install canvas
-cd /ql
+apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && cd scripts && npm install canvas --build-from-source
 TIME l "安装python3"
-apk add python3 zlib-dev gcc jpeg-dev python3-dev musl-dev freetype-dev
 cd /ql
+apk add python3 zlib-dev gcc jpeg-dev python3-dev musl-dev freetype-dev
 echo
 TIME g "依赖安装完毕..."
 echo
