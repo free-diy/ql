@@ -97,12 +97,16 @@ TIME l "安装依赖silly-datetime"
 pnpm install -g silly-datetime
 TIME l "安装依赖jieba"
 pip3 install jieba
+TIME l "安装依赖lxml"
+pip3 install lxml
 TIME l "安装依赖gevent"
 pip install gevent
 TIME l "安装依赖b4"
 pip3 install b4
 TIME l "安装依赖bs4"
 pip3 install bs4
+TIME l "安装依赖zhon"
+pip3 install zhon
 TIME l "安装依赖moment"
 pip3 install moment
 TIME l "安装依赖aiohttp"
