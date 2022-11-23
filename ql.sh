@@ -107,6 +107,8 @@ TIME l "安装依赖moment"
 pip3 install moment
 TIME l "安装依赖aiohttp"
 pip3 install aiohttp
+TIME l "安装依赖pycryptodome"
+pip3 install pycryptodome
 TIME l "安装依赖PyExecJS"
 pip3 install PyExecJS
 TIME l "安装cairo-dev"
