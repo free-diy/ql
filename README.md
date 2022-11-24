@@ -2,5 +2,5 @@
 
 ## 一键安装命令
 ```shell
-docker exec -it qinglong bash -c  "$(curl -fsSL https://raw.githubusercontent.com/xiaoyouke01/ql/main/ql.sh)"
+docker exec -it qinglong bash -c  "$(curl -fsSL https://raw.githubusercontent.com/free-diy/ql/main/rely/ql.sh)"
 ```
