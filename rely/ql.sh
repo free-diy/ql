@@ -50,7 +50,7 @@ pip3 install --upgrade pip
 TIME l "升级setuptools"
 pip3 install --upgrade setuptools
 TIME l "安装pip依赖"
-pip3 install download jieba lxml gevent b4 bs4 zhon moment aiohttp pycryptodome PyExecJS cairo-dev
+pip3 install download jieba lxml gevent b4 bs4 zhon moment aiohttp pycryptodome PyExecJS
 
 pip3 install requests
 
