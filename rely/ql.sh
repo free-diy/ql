@@ -27,6 +27,11 @@ sleep 2
 npm config set registry https://mirrors.huaweicloud.com/repository/npm/
 npm config get registry
 latest_ver="$(wget -qO- -t1 -T2 "https://api.github.com/repos/npm/cli/releases/latest" |grep "tag_name" |head -n 1 |awk -F ":" '{print $2}' |sed 's/\"//g;s/,//g;s/ //g' |sed 's/^v//')"
+
+npm install -g npm
+TIME l "升级npm至${latest_ver}"
+npm install -g npm@${latest_ver} --force
+
 apk update
 
 apk add vim nano
