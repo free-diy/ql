@@ -42,8 +42,6 @@ pnpm install -g
 
 TIME l "安装依赖"
 pnpm install -g js-base64 qrcode-terminal silly-datetime
-TIME l "安装yarn"
-npm install -g yarn --force
 TIME l "安装依赖typescript"
 yarn add typescript
 TIME l "安装依赖"
