@@ -42,10 +42,6 @@ pnpm install -g
 
 TIME l "安装依赖"
 pnpm install -g js-base64 qrcode-terminal silly-datetime
-TIME l "安装依赖ts-node"
-yarn add ts-node
-TIME l "安装依赖typescript"
-yarn add typescript
 TIME l "安装依赖"
 npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio node-jsencrypt
 TIME l "升级pip"
