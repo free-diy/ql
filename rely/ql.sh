@@ -25,12 +25,16 @@ TIME y "安装依赖需要时间，请耐心等待!"
 echo
 sleep 2
 npm config set registry https://mirrors.huaweicloud.com/repository/npm/
-npm config get registry
-latest_ver="$(wget -qO- -t1 -T2 "https://api.github.com/repos/npm/cli/releases/latest" |grep "tag_name" |head -n 1 |awk -F ":" '{print $2}' |sed 's/\"//g;s/,//g;s/ //g' |sed 's/^v//')"
+
+echo
+"当前node版本(如果没有node，请自行安装): "
+node -v
+
+echo
+"当前npm版本(如果没有npm，请自行安装): "
+npm -v
 
 npm install -g npm
-TIME l "升级npm至${latest_ver}"
-npm install -g npm@${latest_ver} --force
 
 apk update
 
