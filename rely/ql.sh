@@ -22,9 +22,6 @@ echo
 TIME l "安装依赖..."
 echo
 TIME y "安装依赖需要时间，请耐心等待!"
-echo
-sleep 2
-npm config set registry https://mirrors.huaweicloud.com/repository/npm/
 
 echo
 "当前node版本(如果没有node，请自行安装): "
@@ -33,6 +30,10 @@ node -v
 echo
 "当前npm版本(如果没有npm，请自行安装): "
 npm -v
+
+echo
+sleep 2
+npm config set registry https://mirrors.huaweicloud.com/repository/npm/
 
 npm install -g npm
 
