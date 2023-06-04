@@ -27,29 +27,23 @@ echo
 sleep 2
 npm config set registry https://mirrors.huaweicloud.com/repository/npm/
 
-npm install -g npm
-
 apk update
 
-pnpm add -g pnpm
-
-pnpm install -g
 
 TIME l "安装yarn"
 npm install -g yarn --force
 
 TIME l "安装依赖"
-pnpm install -g js-base64 qrcode-terminal silly-datetime
+pnpm install -g pnpm js-base64 qrcode-terminal silly-datetime
 TIME l "安装依赖"
 npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio moment node-jsencrypt
 TIME l "升级pip"
 pip3 install --upgrade pip
 TIME l "升级setuptools"
 pip3 install --upgrade setuptools
-TIME l "安装pip依赖"
-pip3 install requests
 
-pip3 install download jieba lxml gevent b4 bs4 zhon moment aiohttp pycryptodome PyExecJS
+TIME l "安装pip依赖"
+pip3 install requests download jieba lxml gevent b4 bs4 zhon moment aiohttp pycryptodome PyExecJS
 
 cd /ql/scripts/ && apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i && npm i -S ts-node typescript @types/node date-fns axios png-js canvas --build-from-source
 cd /ql
