@@ -55,6 +55,6 @@ TIME l "安装python3"
 cd /ql
 apk add python3 zlib-dev gcc jpeg-dev python3-dev musl-dev freetype-dev
 echo
-TIME g "依赖安装完毕..."
+TIME g "依赖安装完毕...建议重启 Docker"
 echo
 exit 0
