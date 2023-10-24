@@ -38,7 +38,7 @@ pnpm install -g
 TIME l "安装依赖"
 pnpm install -g js-base64 qrcode-terminal silly-datetime
 
-npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio moment node-jsencrypt
+npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio moment node-jsencrypt iconv-lite
 
 TIME l "安装yarn"
 npm install -g yarn --force
