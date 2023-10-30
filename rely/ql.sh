@@ -24,24 +24,17 @@ echo
 TIME y "安装依赖需要时间，请耐心等待!"
 
 echo
-sleep 2
-npm config set registry https://mirrors.huaweicloud.com/repository/npm/
 
 apk update
 
-apk add vim nano
-
-pnpm add -g pnpm
-
-pnpm install -g
+apk add vim nano g++ make --no-cache
 
 TIME l "安装依赖"
-pnpm install -g js-base64 qrcode-terminal silly-datetime
+pnpm config set registry https://registry.npm.taobao.org
+pnpm install -g pnpm ds png-js date-fns axios@0.27.2 crypto-js ts-md5 tslib @types/node request jsdom moment cheerio tough-cookie https-proxy-agent js-base64 qrcode-terminal silly-datetime
 
-npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio moment node-jsencrypt iconv-lite
-
-TIME l "安装yarn"
-npm install -g yarn --force
+npm config set registry https://mirrors.huaweicloud.com/repository/npm/
+npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio moment node-jsencrypt iconv-lite yarn --force
 
 TIME l "升级pip"
 pip3 install --upgrade pip
@@ -51,13 +44,13 @@ pip3 install --upgrade setuptools
 TIME l "安装pip依赖"
 pip3 install requests download jieba lxml gevent b4 bs4 zhon moment aiohttp pycryptodome PyExecJS
 
-cd /ql/scripts/ && apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i && npm i -S ts-node typescript @types/node date-fns axios png-js canvas --build-from-source
+cd /ql/data/scripts/ && apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i && npm i -S ts-node typescript @types/node date-fns axios png-js canvas --build-from-source
 cd /ql
 apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && cd scripts && npm install canvas --build-from-source
 TIME l "安装python3"
 cd /ql
 apk add python3 zlib-dev gcc jpeg-dev python3-dev musl-dev freetype-dev
 echo
-TIME g "依赖安装完毕...建议重启 Docker"
+TIME g "依赖安装完毕..."
 echo
 exit 0
