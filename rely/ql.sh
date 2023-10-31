@@ -31,10 +31,10 @@ apk add vim nano g++ make --no-cache
 
 TIME l "安装依赖"
 pnpm config set registry https://registry.npm.taobao.org
-pnpm install -g pnpm ds png-js date-fns axios@0.27.2 crypto-js ts-md5 tslib @types/node request jsdom moment cheerio tough-cookie https-proxy-agent js-base64 qrcode-terminal silly-datetime
+pnpm install -g pnpm ds png-js date-fns axios@0.27.2 crypto-js ts-md5 tslib @types/node request jsdom moment cheerio tough-cookie https-proxy-agent js-base64 qrcode-terminal silly-datetime global-agent
 
 npm config set registry https://mirrors.huaweicloud.com/repository/npm/
-npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio moment node-jsencrypt iconv-lite yarn --force
+npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio moment node-jsencrypt iconv-lite global-agent yarn --force
 
 TIME l "升级pip"
 pip3 install --upgrade pip
