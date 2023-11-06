@@ -1,26 +1,13 @@
-假如decode函数接受到list是https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages/oC20230108wee/oC20230108wee?actId=afcdc4c5b022448_230125
-根据给定的URL匹配活动变量，并返回相应的结果。如果URL匹配成功，函数将返回形如`"export DPLHTY="<活动ID>"，其中<活动ID>是从URL中提取actId后变量
-按要求修改部分代码
-
 import re
 
 url_rules = {
     "/wx/completeInfoActivity/view/": "jd_completeInfoActivity_activityUrl",
-    "/activity/daily/wx/": "jd_daily_activityUrl",
-    "/drawCenter/": "jd_drawCenter_activityId",,
-    "/ql/front/showInviteJoin":"jd_jinggeng_showInviteJoin_activityUrl",
-    "/ql/front/showPartition":"jd_jinggeng_showPartition_activityUrl",
-    "/ql/front/showPerfectInformation":"jd_jinggeng_showPerfectInformation_activityUrl",
+    "/ql/front/showPerfectInformation": "jd_jinggeng_showPerfectInformation_activityUrl",
     "https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages": "DPLHTY",
     "https://cjhydz-isv.isvjcloud.com/wxTeam/activity": "jd_cjhy_activityId",
 }
 
 def check_active(url):
-    """
-    根据url匹配活动变量
-    :param url:
-    :return:
-    """
     for variable in url_rules:
         print(url_rules[variable])
         res = re.findall(variable, url)
@@ -28,24 +15,20 @@ def check_active(url):
             return f'export {url_rules[variable]}="{url}"'
     result = None
     if 'https://cjhydz-isv.isvjcloud.com/wxTeam/activity' in url:
-        activityId = url.split('&')[0].split('activityId=')[1]
-        result = 'export jd_cjhy_activityId="' + str(
-        activityId) + '"\n' + 'export jd_cjhy_activityUrl="https://cjhydz-isv.isvjcloud.com"'
+        activityId = re.findall(r'activityId=([^&]+)', url)[0]
+        result = f'export jd_cjhy_activityId="{activityId}"\nexport jd_cjhy_activityUrl="https://cjhydz-isv.isvjcloud.com"'
     elif 'https://lzkjdz-isv.isvjcloud.com/wxTeam/activity2' in url:
-        activityId = url.split('&')[0].split('activityId=')[1]
-        result = 'export jd_zdjr_activityId="' + str(
-        activityId) + '"\n' + 'export jd_zdjr_activityUrl="https://lzkjdz-isv.isvjcloud.com"'
+        activityId = re.findall(r'activityId=([^&]+)', url)[0]
+        result = f'export jd_zdjr_activityId="{activityId}"\nexport jd_zdjr_activityUrl="https://lzkjdz-isv.isvjcloud.com"'
     elif 'microDz' in url:
-        activityId = url.split('&')[0].split('activityId=')[1]
-        result = 'export jd_wdz_activityId="' + str(
-        activityId) + '"\n' + 'export jd_wdz_activityUrl="https://cjhydz-isv.isvjcloud.com"'
+        activityId = re.findall(r'activityId=([^&]+)', url)[0]
+        result = f'export jd_wdz_activityId="{activityId}"\nexport jd_wdz_activityUrl="https://cjhydz-isv.isvjcloud.com"'
     elif 'https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages' in url:
-        activityId =   url.split actId=([^\s&]+)
-        result = 'export DPLHTY=
-
+        activityId = re.findall(r'actId=([^&]+)', url)[0]
+        result = f'export DPLHTY="{activityId}"'
     return result
 
-    
+
 def decode(msg_list):
     """
     decode接口，输入为list，输出为list，必须遵循，否则将会报错
@@ -62,6 +45,20 @@ def decode(msg_list):
             if res:
                 return [res]
 
+        # 口令提取和处理
+        text = re.findall(
+            "[㬌京亰倞兢婛景椋猄竞竟競竸綡鲸鶁][一-龥]{8,16}[东倲冻凍埬岽崠崬東栋棟涷菄諌鯟鶇]|[$%￥@！(#!][a-zA-Z0-9]{6,20}[$%￥@！)#!]",
+            str_in)
+        if len(text):
+            from plugins.jiexi import jComExchange   # 加载解析插件的解析接口
+            msg = jComExchange(text)
+            if 'http' in msg:
+                res = check_active(url_list[0])
+                if res:
+                    return [res]
+    except Exception as e:
+        print(e)
+    return msg_list
 
 
 if __name__ == "__main__":
