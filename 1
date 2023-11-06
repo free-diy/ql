@@ -1,0 +1,134 @@
+假如decode函数接受到list是https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages/oC20230108wee/oC20230108wee?actId=afcdc4c5b022448_230125
+这段代码的作用是根据给定的URL匹配活动变量，并返回相应的结果。如果URL匹配成功，函数将返回形如`"export DPLHTY="<活动ID>"，其中<活动ID>是从URL中提取actId后变量
+在其他不变的情况下 按上述要求只修改下面代码中的··· elif 'jdbeverage/pages' in url:
+        activityId = url.split  actId=([^\s&]+)
+        result = 'export DPLHTY="' + str(
+        activityId) + '"\n'···这段代码
+
+import re
+
+url_rules = {
+    "jdbeverage/pages": "DPLHTY",
+    "/wx/completeInfoActivity/view/": "jd_completeInfoActivity_activityUrl",
+    "/activity/daily/wx/": "jd_daily_activityUrl",
+    "/drawCenter/": "jd_drawCenter_activityId",
+    "/fansactiveall/": "jd_fansDraw_activityUrl",
+    "/ql/front/floor":"jd_jinggeng_floor_activityUrl",
+    "/ql/front/loadBlindBox":"jd_jinggeng_loadBlindBox_activityUrl",
+    "/ql/front/showCart":"jd_jinggeng_showCart_activityUrl",
+    "/ql/front/showDrawOne":"jd_jinggeng_showDrawOne_activityUrl",
+    "/ql/front/showFavoriteShop":"jd_jinggeng_showFavoriteShop_activityUrl",
+    "/ql/front/showInviteJoin":"jd_jinggeng_showInviteJoin_activityUrl",
+    "/ql/front/showPartition":"jd_jinggeng_showPartition_activityUrl",
+    "/ql/front/showPerfectInformation":"jd_jinggeng_showPerfectInformation_activityUrl",
+    "/ql/front/showSign":"jd_jinggeng_showSign_activityUrl",
+    "/ql/front/showTaskDraw":"jd_jinggeng_showTaskDraw_activityUrl",
+    "/wxDrawActivity/|/lzclient/": "LUCK_DRAW_URL",
+    "^(?=.*(lzkj|lorealjdcampaign))(?=.*activityType=10024).*$": "jd_lzkj_loreal_cart_url",
+    "^(?=.*lzkj)(?=.*activityType=(10023|10040)).*$": "jd_lzkj_loreal_daySign_url",
+    "^(?=.*(lzkj|lorealjdcampaign))(?=.*activityType=(10020|10021|10026|10041|10042|10046|10062|10063|10073|10080)).*$": "jd_lzkj_loreal_draw_url",
+    "^(?=.*lzkj)(?=.*activityType=10053).*$": "jd_lzkj_loreal_followGoods_url",
+    "^(?=.*lzkj)(?=.*/cc/interactsaas/)(?=.*activityType=(10006|10070)).*$": "jd_lzkj_loreal_invite_url",
+    "^(?=.*(lzkj|lorealjdcampaign))(?=.*activityType=10069).*$": "jd_lzkj_loreal_lkFollowShop_url",
+    "^(?=.*(lzkj|lorealjdcampaign))(?=.*activityType=10049).*$": "jd_lzkj_loreal_perfectInfo_url",
+    "^(?=.*lzkj)(?=.*activityType=(10001|10002|10003|10004)).*$": "jd_lzkj_loreal_sign_url",
+    "^(?=.*lzkj)(?=.*activityType=10054).*$": "jd_lzkj_loreal_upperSign_url",
+    "pointExgBeans": "jd_pointExgBeans_activityUrl",
+    "pointExgHb":"jd_pointExgHb_activityUrl",
+    "pointExgShiWu":"jd_pointExgShiWu_activityUrl",
+    "^(?=.*pro)(?=.*code).*$": "jd_prodev_actCode",
+    "/sign/sevenDay/signActivity": "jd_shopSign_activityUrl",
+    "/sign/signActivity": "jd_shopSign_activityUrl",
+    "^(?=.*lorealjdcampaign)(?=.*/cc/cjwx/sign/).*$": "jd_shopSign_activityUrl",
+    "/mshop/shopdraw": "jd_shopDraw_venderId",
+    "/cart_item/": "jd_cart_item_activityUrl",
+    "/collect_item/": "jd_collect_item_activityUrl",
+    "/collect_shop/": "jd_collect_shop_activityUrl",
+    "^(?=.*txzj)(?=.*/lottery/).*$": "jd_lottery_activityUrl",
+    "/share_new/": "jd_share_new_activityUrl",
+    "^(?=.*txzj)(?=.*/sign_in/).*$": "jd_lottery_activityUrl",
+    "/wxBuildActivity/": "jd_wxBuildActivity_activityId",
+    "/wxCartKoi/": "jd_wxCartKoi_activityId",
+    "/wxCollectCard/": "jd_wxCollectCard_activityId",
+    "/wxCollectionActivity/": "jd_wxCollectionActivity_activityUrl",
+    "/wxFansInterActionActivity/": "jd_wxFansInterActionActivity_activityId",
+    "/wxGameActivity/": "jd_wxGameActivity_activityUrl",
+    "/wxKnowledgeActivity/": "jd_wxKnowledgeActivity_activityUrl",
+    "/wxMcLevelAndBirthGifts/": "jd_wxMcLevelAndBirthGifts_activityUrl",
+    "/wxSecond/": "jd_wxSecond_activityId",
+    "/wxShareActivity/": "jd_wxShareActivity_activityId",
+    "/wxShopFollowActivity/": "jd_wxShopFollowActivity_activityUrl",
+    "wxShopGift": "jd_wxShopGift_activityUrl",
+    "/wxTeam/": "jd_wxTeam_activityUrl",
+    "/wxUnPackingActivity/": "jd_wxUnPackingActivity_activityId",
+    "/wxgame/": "jd_wxgame_activityId",
+}
+
+def check_active(url):
+    """
+    根据url匹配活动变量
+    :param url:
+    :return:
+    """
+    for variable in url_rules:
+        print(url_rules[variable])
+        res = re.findall(variable, url)
+        if len(res) > 0:
+            return f'export {url_rules[variable]}="{url}"'
+    result = None
+    if 'https://cjhydz-isv.isvjcloud.com/wxTeam/activity' in url:
+        activityId = url.split('&')[0].split('activityId=')[1]
+        result = 'export jd_cjhy_activityId="' + str(
+        activityId) + '"\n' + 'export jd_cjhy_activityUrl="https://cjhydz-isv.isvjcloud.com"'
+    elif 'https://lzkjdz-isv.isvjcloud.com/wxTeam/activity2' in url:
+        activityId = url.split('&')[0].split('activityId=')[1]
+        result = 'export jd_zdjr_activityId="' + str(
+        activityId) + '"\n' + 'export jd_zdjr_activityUrl="https://lzkjdz-isv.isvjcloud.com"'
+    elif 'microDz' in url:
+        activityId = url.split('&')[0].split('activityId=')[1]
+        result = 'export jd_wdz_activityId="' + str(
+        activityId) + '"\n' + 'export jd_wdz_activityUrl="https://cjhydz-isv.isvjcloud.com"'
+    elif 'jdbeverage/pages' in url:
+        activityId = url.split  actId=([^\s&]+)
+        result = 'export DPLHTY="' + str(
+        activityId) + '"\n'
+
+    return result
+
+    
+def decode(msg_list):
+    """
+    decode接口，输入为list，输出为list，必须遵循，否则将会报错
+    :param msg_list:
+    :return:
+    """
+    try:
+        str_in = str(msg_list)  # 提取收到的字符串
+        # url提取和处理
+        url_list = re.findall(r'http[s]{0,1}?://(?:[#?&\-=\w./]|(?:%[\da-fA-F]+))+', str_in)  # 提取url
+        print(url_list)
+        if len(url_list) > 0:
+            res = check_active(url_list[0])
+            if res:
+                return [res]
+
+        # 口令提取和处理
+        text = re.findall(
+            "[㬌京亰倞兢婛景椋猄竞竟競竸綡鲸鶁][一-龥]{8,16}[东倲冻凍埬岽崠崬東栋棟涷菄諌鯟鶇]|[$%￥@！(#!][a-zA-Z0-9]{6,20}[$%￥@！)#!]",
+            str_in)
+        if len(text):
+            from plugins.jiexi import jComExchange   # 加载解析插件的解析接口
+            msg = jComExchange(text)
+            if 'http' in msg:
+                res = check_active(url_list[0])
+                if res:
+                    return [res]
+    except Exception as e:
+        print(e)
+    return msg_list
+
+
+if __name__ == "__main__":
+    env = 'https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages/oC20230108wee/oC20230108wee?actId=afcdc4c5b022448_230119'
+    str_out = decode(env)
+    print(str_out)
