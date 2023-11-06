@@ -1,9 +1,9 @@
 假如decode函数接受到list是https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages/oC20230108wee/oC20230108wee?actId=afcdc4c5b022448_230125
 这段代码的作用是根据给定的URL匹配活动变量，并返回相应的结果。如果URL匹配成功，函数将返回形如`"export DPLHTY="<活动ID>"，其中<活动ID>是从URL中提取actId后变量
-在其他不变的情况下 按上述要求只修改下面代码中的··· elif 'jdbeverage/pages' in url:
+在其他不变的情况下 按上述要求只修改下面代码中包含elif 'jdbeverage/pages' in url:
         activityId = url.split  actId=([^\s&]+)
         result = 'export DPLHTY="' + str(
-        activityId) + '"\n'···这段代码
+        activityId) + '"\n'这段
 
 import re
 
