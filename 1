@@ -5,7 +5,6 @@
 import re
 
 url_rules = {
-    "jdbeverage/pages": "DPLHTY",
     "/wx/completeInfoActivity/view/": "jd_completeInfoActivity_activityUrl",
     "/activity/daily/wx/": "jd_daily_activityUrl",
     "/drawCenter/": "jd_drawCenter_activityId",,
@@ -40,7 +39,7 @@ def check_active(url):
         activityId = url.split('&')[0].split('activityId=')[1]
         result = 'export jd_wdz_activityId="' + str(
         activityId) + '"\n' + 'export jd_wdz_activityUrl="https://cjhydz-isv.isvjcloud.com"'
-    elif 'jdbeverage/pages' in url:
+    elif 'https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages' in url:
         activityId =   actId=([^\s&]+)
         result = 'export DPLHTY=
 
