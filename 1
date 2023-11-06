@@ -1,9 +1,6 @@
 假如decode函数接受到list是https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages/oC20230108wee/oC20230108wee?actId=afcdc4c5b022448_230125
 这段代码的作用是根据给定的URL匹配活动变量，并返回相应的结果。如果URL匹配成功，函数将返回形如`"export DPLHTY="<活动ID>"，其中<活动ID>是从URL中提取actId后变量
-在其他不变的情况下 按上述要求只修改下面代码中包含elif 'jdbeverage/pages' in url:
-        activityId = url.split  actId=([^\s&]+)
-        result = 'export DPLHTY="' + str(
-        activityId) + '"\n'这段
+在其代码不变的情况下，修改上述部分代码
 
 import re
 
@@ -44,9 +41,8 @@ def check_active(url):
         result = 'export jd_wdz_activityId="' + str(
         activityId) + '"\n' + 'export jd_wdz_activityUrl="https://cjhydz-isv.isvjcloud.com"'
     elif 'jdbeverage/pages' in url:
-        activityId = url.split  actId=([^\s&]+)
-        result = 'export DPLHTY="' + str(
-        activityId) + '"\n'
+        activityId =   actId=([^\s&]+)
+        result = 'export DPLHTY=
 
     return result
 
@@ -70,6 +66,6 @@ def decode(msg_list):
 
 
 if __name__ == "__main__":
-    env = 'https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages/oC20230108wee/oC20230108wee?actId=afcdc4c5b022448_230119'
+    env = 'https://cjhy-isv.isvjcloud.com/mc/wxMcLevelAndBirthGifts/activity?activityId=03e9043bd1014887b6d663bab7001562'
     str_out = decode(env)
     print(str_out)
