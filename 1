@@ -67,20 +67,6 @@ def decode(msg_list):
             if res:
                 return [res]
 
-        # 口令提取和处理
-        text = re.findall(
-            "[㬌京亰倞兢婛景椋猄竞竟競竸綡鲸鶁][一-龥]{8,16}[东倲冻凍埬岽崠崬東栋棟涷菄諌鯟鶇]|[$%￥@！(#!][a-zA-Z0-9]{6,20}[$%￥@！)#!]",
-            str_in)
-        if len(text):
-            from plugins.jiexi import jComExchange   # 加载解析插件的解析接口
-            msg = jComExchange(text)
-            if 'http' in msg:
-                res = check_active(url_list[0])
-                if res:
-                    return [res]
-    except Exception as e:
-        print(e)
-    return msg_list
 
 
 if __name__ == "__main__":
