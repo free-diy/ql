@@ -1,6 +1,6 @@
 假如decode函数接受到list是https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages/oC20230108wee/oC20230108wee?actId=afcdc4c5b022448_230125
 根据给定的URL匹配活动变量，并返回相应的结果。如果URL匹配成功，函数将返回形如`"export DPLHTY="<活动ID>"，其中<活动ID>是从URL中提取actId后变量
-在其代码不变的情况下，修改上述部分代码
+按要求修改部分代码
 
 import re
 
@@ -40,7 +40,7 @@ def check_active(url):
         result = 'export jd_wdz_activityId="' + str(
         activityId) + '"\n' + 'export jd_wdz_activityUrl="https://cjhydz-isv.isvjcloud.com"'
     elif 'https://jinggengjcq-isv.isvjcloud.com/jdbeverage/pages' in url:
-        activityId =   actId=([^\s&]+)
+        activityId =   url.split actId=([^\s&]+)
         result = 'export DPLHTY=
 
     return result
