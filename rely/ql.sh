@@ -30,7 +30,7 @@ apk update
 apk add vim nano g++ make --no-cache
 
 TIME l "安装依赖"
-pnpm config set registry https://registry.npm.taobao.org
+#pnpm config set registry https://registry.npm.taobao.org
 pnpm install -g pnpm ds png-js date-fns axios@0.27.2 crypto-js ts-md5 tslib @types/node request jsdom moment cheerio tough-cookie https-proxy-agent js-base64 qrcode-terminal silly-datetime global-agent
 
 npm config set registry https://mirrors.huaweicloud.com/repository/npm/
