@@ -30,7 +30,7 @@ apk update
 apk add vim nano g++ make --no-cache
 
 TIME l "安装依赖"
-npm config set registry https://mirrors.huaweicloud.com/repository/npm/
+npm config set registry https://registry.npmmirror.com
 npm install -g npm date-fns axios png-js crypto-js ds md5 ts-md5 tslib download @types/node requests tough-cookie jsdom tunnel fs ws form-data js-base64 node-rsa jsencrypt got silly-datetime cheerio moment node-jsencrypt iconv-lite global-agent yarn --force
 
 pnpm add -g pnpm
